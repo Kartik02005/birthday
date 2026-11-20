@@ -641,7 +641,7 @@
         <div class="cam">
           <div class="lens"></div>
           <div class="flash"></div>
-          <div class="scr"><img class="ph" src="assets/photo1.jpg"></div>
+          <div class="scr"><img class="ph" src="assets/photo1.jpeg"></div>
         </div>
         <div>
           <div class="kick">psst… for <span data-name></span></div>
@@ -669,7 +669,7 @@
           <div class="f" style="inset:0;color:#f8a9c6;animation-duration:12s"><svg class="fl">
               <use href="#bloom" />
             </svg></div>
-          <div class="c"><img class="ph" src="assets/photo2.jpg"></div>
+          <div class="c"><img class="ph" src="assets/photo2.jpeg"></div>
         </div>
         <div class="pad"><small>ENTER PASSWORD 🔒</small>
           <div class="dots" id="dots"><i></i><i></i><i></i><i></i></div>
@@ -693,16 +693,16 @@
       <h2>Look at you ✿</h2>
       <div class="polas">
         <div class="pola" style="--r:-4deg">
-          <div class="im"><img class="ph" src="assets/photo2.jpg"></div><b>glowing</b>
+          <div class="im"><img class="ph" src="assets/photo3.jpeg"></div><b>glowing</b>
         </div>
         <div class="pola" style="--r:3deg;margin-top:22px">
-          <div class="im"><img class="ph" src="assets/photo3.jpg"></div><b>main character</b>
+          <div class="im"><img class="ph" src="assets/photo4.jpeg"></div><b>main character</b>
         </div>
         <div class="pola" style="--r:-2deg">
-          <div class="im"><img class="ph" src="assets/photo4.jpg"></div><b>that smile</b>
+          <div class="im"><img class="ph" src="assets/photo5.jpeg"></div><b>that smile</b>
         </div>
         <div class="pola" style="--r:4deg;margin-top:14px">
-          <div class="im"><img class="ph" src="assets/photo5.jpg"></div><b>pure sunshine</b>
+          <div class="im"><img class="ph" src="assets/photo6.jpeg"></div><b>pure sunshine</b>
         </div>
       </div>
       <span class="note">today is all about you ☀️</span>
@@ -719,7 +719,7 @@
       <div class="f" style="right:0;top:0;width:70px;color:#fff"><svg class="fl">
           <use href="#daisy" />
         </svg></div>
-      <div class="kick">tap play</div>
+      <div class="kick">misti🌷</div>
       <h2>Little moments 🎬</h2>
       <div class="vids">
         <div class="vcard" style="--r:-3deg"><video src="assets/video1.mp4" controls playsinline
@@ -762,7 +762,7 @@
       <div class="kick">to the birthday girl</div>
       <div class="letterwrap">
         <div class="lp">
-          <div style="aspect-ratio:1;overflow:hidden"><img class="ph" src="assets/photo6.jpg"></div>
+          <div style="aspect-ratio:1;overflow:hidden"><img class="ph" src="assets/photo7.jpeg"></div>
           <div class="f" style="right:-24px;top:-26px;width:70px;color:#f48fb1"><svg class="fl">
               <use href="#bloom" />
             </svg></div>
@@ -797,13 +797,13 @@
       <div class="script" style="font-size:36px">you deserve all the flowers 🌸</div>
       <div class="fg">
         <div class="pola" style="--r:-4deg;padding-bottom:9px">
-          <div class="im"><img class="ph" src="assets/photo1.jpg"></div>
+          <div class="im"><img class="ph" src="assets/photo1.jpeg"></div>
         </div>
         <div class="pola" style="--r:3deg;padding-bottom:9px">
-          <div class="im"><img class="ph" src="assets/photo3.jpg"></div>
+          <div class="im"><img class="ph" src="assets/photo3.jpeg"></div>
         </div>
         <div class="pola" style="--r:-2deg;padding-bottom:9px">
-          <div class="im"><img class="ph" src="assets/photo5.jpg"></div>
+          <div class="im"><img class="ph" src="assets/photo5.jpeg"></div>
         </div>
       </div>
       <button class="pill" id="wish" onclick="wish()">Make a wish 🎂</button>
@@ -812,24 +812,274 @@
 
   <button class="music" id="mb" onclick="music()">♫ Play music</button><audio id="au" src="assets/music.mp3"
     loop></audio>
+
   <script>
     const CFG = { name: 'Rupsha', age: 18, code: '2811' };
-    const byId = i => document.getElementById(i), S = ['welcome', 'lock', 'memories', 'videos', 'envelope', 'letter', 'final']; let pin = '', no = 0;
-    document.addEventListener('error', e => { const t = e.target; if (t.tagName === 'IMG' && !t.dataset.f) { t.dataset.f = 1; t.src = 'assets/photo-placeholder.svg' } }, true);
-    document.querySelectorAll('[data-name]').forEach(e => e.textContent = CFG.name); document.querySelectorAll('[data-age]').forEach(e => e.textContent = CFG.age);
-    function go(id) { document.querySelectorAll('video').forEach(v => v.pause()); S.forEach(s => byId(s).classList.toggle('on', s === id)); byId('bar').style.width = S.indexOf(id) / (S.length - 1) * 100 + '%'; scrollTo(0, 0); if (id === 'final') burst() }
-    function try_() { no++; byId('try').classList.add('on'); byId('no').textContent = ['NO!!', 'Really?', 'Still no?', 'OK fine…'][Math.min(no, 3)] }
-    const K = byId('keys');['1', '2', '3', '4', '5', '6', '7', '8', '9', '⌫', '0', '✓'].forEach(k => { const b = document.createElement('button'); b.className = 'key'; b.textContent = k; b.onclick = () => press(k); K.appendChild(b) });
-    function press(k) { const h = byId('hint'); if (k === '⌫') pin = pin.slice(0, -1); else if (k === '✓') { if (pin === CFG.code) { h.textContent = 'Unlocked! 🌸'; setTimeout(() => go('memories'), 500) } else { h.textContent = 'Not quite, try again 💗'; byId('dots').classList.add('shake'); setTimeout(() => byId('dots').classList.remove('shake'), 400); pin = '' } } else if (pin.length < 4) pin += k;[...byId('dots').children].forEach((d, i) => d.classList.toggle('k', i < pin.length)) }
-    const C = ['#ff8fb1', '#ffd45e', '#c9b6f2', '#9fd8b3', '#ffb89a', '#8fd0f5'], F = ['Playfair Display', 'DM Sans', 'Caveat', 'Sacramento'];
-    'HAPPY BIRTHDAY'.split('').forEach((c, i) => { if (c === ' ') { byId('rn').appendChild(Object.assign(document.createElement('i'), { style: 'width:14px' })); return } const s = document.createElement('span'); s.textContent = c; s.style.cssText = `background:${C[i % 6]};color:${i % 3 ? '#fff' : '#6b3a50'};font-family:'${F[i % 3]}',serif;transform:rotate(${(i * 37 % 9) - 4}deg)`; byId('rn').appendChild(s) });
-    C.concat(C).slice(0, 9).forEach(c => { const i = document.createElement('i'); i.style.background = c; byId('bunt').appendChild(i) });
-    document.querySelectorAll('.vcard video').forEach(v => { v.addEventListener('loadedmetadata', () => v.parentNode.classList.add('ok')); v.addEventListener('play', () => byId('au').pause()) });
-    function openEnv() { byId('env').classList.add('open'); setTimeout(() => go('letter'), 650) }
-    function burst() { const p = byId('petals'); p.innerHTML = ''; const cl = ['#f48fb1', '#fff', '#ffd45e', '#c9b6f2', '#ff9aa8']; for (let i = 0; i < 26; i++) { const s = document.createElementNS('http://www.w3.org/2000/svg', 'svg'); s.setAttribute('width', 16 + Math.random() * 20); s.setAttribute('height', 16 + Math.random() * 20); s.setAttribute('viewBox', '0 0 100 100'); s.innerHTML = '<use href="#bloom"/>'; s.style.cssText = `left:${Math.random() * 100}%;color:${cl[i % 5]};animation-duration:${5 + Math.random() * 5}s;animation-delay:${Math.random() * 3}s;--x:${Math.random() * 160 - 80}px`; p.appendChild(s) } setTimeout(() => p.innerHTML = '', 11000) }
-    function wish() { burst(); byId('wish').textContent = 'Wish made! ✨ Hope it comes true 🌷' }
-    function music() { const a = byId('au'), b = byId('mb'); if (a.paused) a.play().then(() => b.textContent = '♫ Pause').catch(() => b.textContent = 'Add assets/music.mp3'); else { a.pause(); b.textContent = '♫ Play music' } }
+
+    const byId = i => document.getElementById(i);
+    const S = ['welcome', 'lock', 'memories', 'videos', 'envelope', 'letter', 'final'];
+
+    let pin = '', no = 0;
+
+    // Replace broken images with placeholders
+    document.addEventListener('error', e => {
+      const t = e.target;
+      if (t.tagName === 'IMG' && !t.dataset.f) {
+        t.dataset.f = 1;
+        t.src = 'assets/photo-placeholder.svg';
+      }
+    }, true);
+
+    // Set birthday details
+    document.querySelectorAll('[data-name]').forEach(e => e.textContent = CFG.name);
+    document.querySelectorAll('[data-age]').forEach(e => e.textContent = CFG.age);
+
+    // MUSIC AUTOPLAY FUNCTION
+    function startMusic() {
+      const a = byId('au');
+      const b = byId('mb');
+
+      if (!a) return;
+
+      a.volume = 0.5;
+
+      a.play().then(() => {
+        if (b) b.textContent = '♫ Pause';
+      }).catch(() => {
+        if (b) b.textContent = '♫ Play music';
+      });
+    }
+
+    // Navigation
+    function go(id) {
+      document.querySelectorAll('video').forEach(v => v.pause());
+
+      S.forEach(s => byId(s).classList.toggle('on', s === id));
+
+      byId('bar').style.width =
+        S.indexOf(id) / (S.length - 1) * 100 + '%';
+
+      scrollTo(0, 0);
+
+      if (id === 'final') burst();
+
+      // Start music automatically on entering PIN screen
+      if (id === 'lock') {
+        startMusic();
+      }
+    }
+
+    // NO button interaction
+    function try_() {
+      no++;
+
+      byId('try').classList.add('on');
+
+      byId('no').textContent =
+        ['NO!!', 'Really?', 'Still no?', 'OK fine…'][Math.min(no, 3)];
+    }
+
+    // PIN keypad
+    const K = byId('keys');
+
+    ['1', '2', '3', '4', '5', '6', '7', '8', '9', '⌫', '0', '✓'].forEach(k => {
+      const b = document.createElement('button');
+      b.className = 'key';
+      b.textContent = k;
+      b.onclick = () => press(k);
+      K.appendChild(b);
+    });
+
+    function press(k) {
+      const h = byId('hint');
+
+      if (k === '⌫') {
+        pin = pin.slice(0, -1);
+      }
+      else if (k === '✓') {
+        if (pin === CFG.code) {
+          h.textContent = 'Unlocked! 🌸';
+          setTimeout(() => go('memories'), 500);
+        } else {
+          h.textContent = 'Not quite, try again 💗';
+
+          byId('dots').classList.add('shake');
+
+          setTimeout(() => {
+            byId('dots').classList.remove('shake');
+          }, 400);
+
+          pin = '';
+        }
+      }
+      else if (pin.length < 4) {
+        pin += k;
+      }
+
+      [...byId('dots').children].forEach((d, i) => {
+        d.classList.toggle('k', i < pin.length);
+      });
+    }
+
+    // Birthday typography
+    const C = ['#ff8fb1', '#ffd45e', '#c9b6f2', '#9fd8b3', '#ffb89a', '#8fd0f5'];
+    const F = ['Playfair Display', 'DM Sans', 'Caveat', 'Sacramento'];
+
+    'HAPPY BIRTHDAY'.split('').forEach((c, i) => {
+      if (c === ' ') {
+        byId('rn').appendChild(
+          Object.assign(document.createElement('i'), {
+            style: 'width:14px'
+          })
+        );
+        return;
+      }
+
+      const s = document.createElement('span');
+
+      s.textContent = c;
+
+      s.style.cssText = `
+            background:${C[i % 6]};
+            color:${i % 3 ? '#fff' : '#6b3a50'};
+            font-family:'${F[i % 3]}',serif;
+            transform:rotate(${(i * 37 % 9) - 4}deg)
+        `;
+
+      byId('rn').appendChild(s);
+    });
+
+    // Birthday bunting
+    C.concat(C).slice(0, 9).forEach(c => {
+      const i = document.createElement('i');
+      i.style.background = c;
+      byId('bunt').appendChild(i);
+    });
+
+    // Video handling
+    document.querySelectorAll('.vcard video').forEach(v => {
+      v.addEventListener('loadedmetadata', () => {
+        v.parentNode.classList.add('ok');
+      });
+
+      v.addEventListener('play', () => {
+        byId('au').pause();
+        byId('mb').textContent = '♫ Play music';
+      });
+    });
+
+    // Envelope animation
+    function openEnv() {
+      byId('env').classList.add('open');
+      setTimeout(() => go('letter'), 650);
+    }
+
+    // Petal/confetti animation
+    function burst() {
+      const p = byId('petals');
+
+      p.innerHTML = '';
+
+      const cl = [
+        '#f48fb1',
+        '#fff',
+        '#ffd45e',
+        '#c9b6f2',
+        '#ff9aa8'
+      ];
+
+      for (let i = 0; i < 26; i++) {
+        const s = document.createElementNS(
+          'http://www.w3.org/2000/svg',
+          'svg'
+        );
+
+        s.setAttribute('width', 16 + Math.random() * 20);
+        s.setAttribute('height', 16 + Math.random() * 20);
+        s.setAttribute('viewBox', '0 0 100 100');
+
+        s.innerHTML = '<use href="#bloom"/>';
+
+        s.style.cssText = `
+                left:${Math.random() * 100}%;
+                color:${cl[i % 5]};
+                animation-duration:${5 + Math.random() * 5}s;
+                animation-delay:${Math.random() * 3}s;
+                --x:${Math.random() * 160 - 80}px
+            `;
+
+        p.appendChild(s);
+      }
+
+      setTimeout(() => p.innerHTML = '', 11000);
+    }
+
+    // Birthday wish
+    function wish() {
+      burst();
+      byId('wish').textContent =
+        'Wish made! ✨ Hope it comes true 🌷';
+    }
+
+    // Manual music play/pause
+    function music() {
+      const a = byId('au');
+      const b = byId('mb');
+
+      if (a.paused) {
+        a.play().then(() => {
+          b.textContent = '♫ Pause';
+        }).catch(() => {
+          b.textContent = 'Add assets/music.mp3';
+        });
+      } else {
+        a.pause();
+        b.textContent = '♫ Play music';
+      }
+    }
+
+    // Replace videos with muted looping versions
+    document.querySelectorAll('.vcard video').forEach(old => {
+      const v = old.cloneNode(true);
+
+      v.muted = true;
+      v.loop = true;
+
+      old.replaceWith(v);
+
+      const show = () => v.parentNode.classList.add('ok');
+
+      v.readyState > 0
+        ? show()
+        : v.addEventListener('loadedmetadata', show);
+
+      v.addEventListener('volumechange', () => {
+        if (!v.muted) {
+          byId('au').pause();
+          byId('mb').textContent = '♫ Play music';
+        }
+      });
+
+      v.addEventListener('play', () => {
+        byId('au').pause();
+        byId('mb').textContent = '♫ Play music';
+      });
+    });
+
+    // Automatically play videos when entering video section
+    const oldGo = go;
+
+    go = function (id) {
+      oldGo(id);
+
+      if (id === 'videos') {
+        document.querySelectorAll('.vcard.ok video').forEach(v => {
+          v.play().catch(() => { });
+        });
+      }
+    };
   </script>
+
 </body>
 
 </html>
